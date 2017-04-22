@@ -5,11 +5,11 @@
    <form @submit="searchKnowledge">
 
    <div class="field has-addons has-addons-centered">
-      <p class="control">
-        <input class="input" type="text" v-model="knowledgeContent" placeholder="Want to know?">  
+      <p class="control is-expanded">
+        <input class="input" type="text" v-model="knowledgeContent" placeholder="What are you looking for?">  
       </p>
       <p class="control">
-        <input class="button is-info is-outlined" type="submit" value="Yes, I want.">          
+        <button class="button is-info is-outlined" type="submit">Search.</button>
       </p>
     </div>
 

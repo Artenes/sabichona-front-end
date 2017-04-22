@@ -2,15 +2,19 @@
 
 	<div id="knowledge-results">
 		
-		<div v-for="knowledge in results" class="card">
-		  <div class="card-content">
-		    <p class="content">{{ knowledge.excerpt }}</p>
-		  </div>
-		  <footer class="card-footer">
-		    <p class="card-footer-item">
-		      <span><a :href="knowledge.url">See knowledge</a></span>
-		    </p>
-		  </footer>
+		<div class="columns" v-for="knowledge in results" >
+			
+			<div class="column is-half is-offset-one-quarter">
+				<div class="card has-text-left">
+					<div class="card-content">
+						<p class="content">{{ knowledge.content }}</p>
+						<small >
+							{{ knowledge.created_at }}
+						</small>
+					</div>
+				</div>
+			</div>
+
 		</div>
 
 	</div>
@@ -19,12 +23,12 @@
 
 <script>
 
-export default {
+	export default {
 
-  name: 'knowledge-results',
+		name: 'knowledge-results',
 
-  props: ['results']
-  
-}
+		props: ['results']
+
+	}
 
 </script>
