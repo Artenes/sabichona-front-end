@@ -1,15 +1,15 @@
 <template>
 
-  <div id="knowledge-search">
+  <div id="knowledge-creation">
 
-   <form @submit="searchKnowledge">
+   <form @submit="createKnowledge">
 
    <div class="field has-addons has-addons-centered">
-      <p class="control is-expanded">
-        <input class="input" type="text" v-model="knowledgeContent" placeholder="What do you want?">  
+      <p class="control">
+        <input class="input" type="text" v-model="knowledgeContent" placeholder="What are you looking for?">  
       </p>
       <p class="control">
-        <button class="button is-info is-outlined" type="submit">Search.</button>
+        <input class="button is-info is-outlined" type="submit" value="Search.">          
       </p>
     </div>
 
@@ -23,7 +23,7 @@
 
   export default {
 
-    name: 'knowledge-search',
+    name: 'knowledge-creation',
 
     data() {return {
 

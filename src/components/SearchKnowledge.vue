@@ -3,31 +3,65 @@
   <div id="knowledge" class="section has-text-centered">
 
     <div class="columns">
+
       <div class="column is-half is-offset-one-quarter">
-        <img src="../assets/logo.png">
-        <h1 class="title is-1">Omniverse.</h1>
-        <h2 class="subtitle">Know what they all know.</h2>
+
+        <img src="../assets/logo.png"><br>
+        <h1 class="title is-1">Knowmiall.</h1>
+        <h2 class="subtitle">Easy to find. Easy to share.</h2>
         <SearchKnowledgeForm @searchingForKnowledge="searchKnowledge">
         </SearchKnowledgeForm>
         <br>
         <div class="columns">
+          
+          <div class="column is-fullwidth">
+            <div class="card has-text-left">
+              <div class="card-content">
+                <p class="content"><textarea class="textarea" placeholder="Share whatever you want here."></textarea></p>
+              </div>
+              <div class="card-footer">
+                <div class="card-footer-item">
+                  <a>Sign-in and Share.</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!--<div class="columns">
           <div class="column">
-            <button class="button is-danger is-outlined is-fullwidth">
-              Show knowledge.
+            <button class="button is-info is-outlined is-fullwidth">
+              Latest.
             </button>
           </div>
           <div class="column">
-            <button class="button is-warning is-outlined is-fullwidth">
-              Random knowledge.
+            <button class="button is-primary is-outlined is-fullwidth">
+              Random.
             </button>
           </div>
           <div class="column">
             <button class="button is-success is-outlined is-fullwidth">
-              What should I know.
+              Popular.
+            </button>
+          </div>
+          <div class="column">
+            <button class="button is-danger is-outlined is-fullwidth">
+              Show.
             </button>
           </div>
         </div>
-        
+        <div class="columns">
+          <div class="column">
+            <button class="button is-outlined is-fullwidth">
+              Santarém.
+            </button>
+          </div>
+          <div class="column">
+            <button class="button is-outlined is-fullwidth">
+              Artenes.
+            </button>
+          </div>
+        </div>-->
       </div>
     </div>
 
