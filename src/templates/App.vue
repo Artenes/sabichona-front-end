@@ -6,7 +6,7 @@
 
 <style>
 
-	@import "../node_modules/bulma/css/bulma.css";
+	@import "../../node_modules/bulma/css/bulma.css";
 
 	.card {
 

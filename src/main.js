@@ -1,17 +1,21 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+
 import Vue from 'vue'
-import Sabichona from './Sabichona'
 import router from './router'
 import vueResource from 'vue-resource'
+import store from './store'
+import Lang from 'vuejs-localization'
+import App from './templates/App'
+
+Lang.requireAll(require.context('./lang', true, /\.js$/))
 
 Vue.config.productionTip = false
-Vue.use(vueResource);
+Vue.use(vueResource)
+Vue.use(Lang, {default: 'en'})
 
-/* eslint-disable no-new */
 new Vue({
   el: '#sabichona-app',
   router,
-  template: '<Sabichona/>',
-  components: { Sabichona }
+  store,
+  template: '<App/>',
+  components: { App }
 })

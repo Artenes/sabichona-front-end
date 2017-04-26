@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import SearchKnowledge from '@/components/SearchKnowledge'
+import Index from '@/pages/Index'
 
 Vue.use(Router)
 
@@ -8,8 +8,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'SearchKnowledge',
-      component: SearchKnowledge
+      name: 'index',
+      component: Index
     }
   ]
 })

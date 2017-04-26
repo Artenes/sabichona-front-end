@@ -7,17 +7,22 @@
       <div class="column is-half is-offset-one-quarter">
 
         <img src="../assets/logo.png"><br>
-        <h1 class="title is-1">Knowmiall.</h1>
+        <h1 class="title is-1">{{ $lang.strings.app_name }}</h1>
         <h2 class="subtitle">Easy to find. Easy to share.</h2>
         <SearchKnowledgeForm @searchingForKnowledge="searchKnowledge">
         </SearchKnowledgeForm>
+
+        <ChangeLocationForm/>
+
         <br>
         <div class="columns">
           
           <div class="column is-fullwidth">
             <div class="card has-text-left">
               <div class="card-content">
-                <p class="content"><textarea class="textarea" placeholder="Share whatever you want here."></textarea></p>
+                <p class="content"><textarea class="textarea" placeholder="Share whatever you want here.">
+                  {{ location }}
+                </textarea></p>
               </div>
               <div class="card-footer">
                 <div class="card-footer-item">
@@ -81,15 +86,14 @@
   import SearchKnowledgeForm from './SearchKnowledgeForm'
   import SearchKnowledgeResults from './SearchKnowledgeResults'
   import CreateKnowledgeForm from './CreateKnowledgeForm'
+  import ChangeLocationForm from './ChangeLocationForm'
 
   export default {
 
-    name: 'knowledge',
-
     data () {return {
 
-      msg: 'I know where you were last night.',
-      knowledges: []
+      knowledges: [],
+      location: locationStorage.state.name
 
     }},
 
@@ -97,13 +101,20 @@
 
       SearchKnowledgeForm,
       SearchKnowledgeResults,
-      CreateKnowledgeForm
+      CreateKnowledgeForm,
+      ChangeLocationForm
 
     },
 
     methods: {
 
       searchKnowledge(knowledge) {
+
+        console.log('fuck')
+
+        locationStorage.commit('set', knowledge)
+
+        return
 
         this.knowledges = [];
 
