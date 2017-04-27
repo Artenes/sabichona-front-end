@@ -1,7 +1,16 @@
+const syncWithStore = function (state) {
+
+	state.uuid = localStorage.getItem("sabichona.location.uuid")
+	state.label = localStorage.getItem("sabichona.location.label")
+	state.city = localStorage.getItem("sabichona.location.city")
+
+}
+
 const state = {
 	
 	uuid: '',
-	label: ''
+	label: '',
+	city: ''
 
 }
 
@@ -9,8 +18,7 @@ const mutations = {
 	
 	refresh(state) {
 
-		state.uuid = localStorage.getItem("sabichona.location.uuid")
-		state.label = localStorage.getItem("sabichona.location.label")
+		syncWithStore(state)
 
 	},
 
@@ -18,9 +26,9 @@ const mutations = {
 
 		localStorage.setItem("sabichona.location.uuid", payload.place_id)
 		localStorage.setItem("sabichona.location.label", payload.formatted_address)
+		localStorage.setItem("sabichona.location.city", payload.locality)
 
-		state.uuid = localStorage.getItem("sabichona.location.uuid")
-		state.label = localStorage.getItem("sabichona.location.label")
+		syncWithStore(state)
 		
 	}
 

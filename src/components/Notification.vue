@@ -1,50 +1,66 @@
 <template>
 
-  <div v-show="isVisible">
   <transition name="fade">
-      <div class="notification is-outlined">
-        {{ content }}
+    <div v-show="isVisible">
+      <div id="notification" class="notification is-info">
+        <span v-html="content"></span>
       </div>
-    </transition>
-  </div>
+    </div>
+  </transition>
 
 </template>
 
 <script>
 
-  import { mapState } from 'vuex'
-
   export default {
-
-    mounted() {
-
-      //this.random()
-
-    },
 
     data() {
 
       return {
 
-        thought: ''
+        isVisible: false,
+        type: 'default',
+        content: ''
 
       }
 
     },
 
-    computed: {
-
-      ...mapState('notification', ['isError', 'isVisible', 'content']),
-
-    },
-
     methods: {
 
-      random() {
+      show(content, type, seconds = 3) {
 
-        let setences = this.$lang.setences.items
-        this.thought = setences[Math.floor(Math.random()*setences.length)];
-        setTimeout(this.random, 4000);
+        this.content = content
+        this.type = type
+
+        this.isVisible = true
+
+        if (seconds > 0)
+          setTimeout(function() { this.hide() }.bind(this), (seconds * 1000));
+
+      },
+
+      flashError(content, seconds = 3) {
+
+        this.show(content, 'danger', seconds)
+
+      },
+
+      flashSuccess(content, seconds = 3) {
+
+        this.show(content, 'success', seconds)
+
+      },
+
+      showMessage(content) {
+
+        this.show(content, 'info', 0)
+
+      },
+
+      hide() {
+
+        this.isVisible = false
 
       }
 
@@ -56,9 +72,15 @@
 
 <style scoped>
 
+  #notification {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
   .fade-enter-active, .fade-leave-active {
     transition: opacity .5s
   }
+  
   .fade-enter, .fade-leave-to {
     opacity: 0
   }

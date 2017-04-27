@@ -1,5 +1,5 @@
 module.exports = {
 
-	invalid_location: 'Don\'t fool me! I know this place doesn\'t exist. Try another one.',
+	invalid_location: 'For some reason I don\'t recognize this place. Can you give me another one?',
 
 }

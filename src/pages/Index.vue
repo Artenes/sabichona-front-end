@@ -4,31 +4,15 @@
 
     <div class="columns">
       <div class="column is-half is-offset-one-quarter">
-
-        <div class="columns logo-row">
-          <div class="column"><Notification/></div>
-          <div class="column is-half">
-            <img id="logo" src="../assets/logo.png">
-            <div v-show="hasLocation">
-              <h1 class="title">{{ $lang.strings.app_name }}</h1>
-              <h2 class="subtitle">{{ $lang.strings.app_description }}</h2>  
-              <p>{{ location }}</p>
-            </div>
-          </div>
-          <div class="column"></div>
-        </div>
         
-        <LocationForm v-show="!hasLocation"/>
+        <!-- First captures de location -->
+        <Location/>
 
-        <SearchKnowledgeForm @searchingForKnowledge="searchKnowledge" v-show="hasLocation"/>
+        <!-- Second explain what this is about -->
+        <Intro/>
 
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column">
-
-        <SearchKnowledgeResults/>
+        <!-- Finnaly show the search and creation interface -->
+        <Knowledge/>
 
       </div>
     </div>
@@ -39,18 +23,23 @@
 
 <script>
 
-  import Notification from '@/components/Notification'
-  import LocationForm from '@/components/LocationForm'
-  import SearchKnowledgeForm from '@/components/SearchKnowledgeForm'
-  import SearchKnowledgeResults from '@/components/SearchKnowledgeResults'
-  import CreateKnowledgeForm from '@/components/CreateKnowledgeForm'
+  import Location from '@/components/Location'
+  import Intro from '@/components/Intro'
+  import Knowledge from '@/components/Knowledge'
   import { mapState, mapGetters } from 'vuex'
 
   export default {
 
+    components: {
+
+      Location, Intro, Knowledge
+
+    },
+
     created() {
 
       this.$store.commit('location/refresh')
+      this.$store.commit('experience/refresh')
 
     },
 
@@ -59,40 +48,8 @@
       ...mapGetters('location', ['hasLocation']),
       ...mapState('location', {location: 'label'})
 
-    },
-
-    components: {
-
-      Notification,
-      LocationForm,
-      SearchKnowledgeForm,
-      SearchKnowledgeResults,
-      CreateKnowledgeForm
-
-    },
-
-    methods: {
-
-      searchKnowledge(knowledge) {
-
-        console.log('fuck')
-
-        locationStorage.commit('set', knowledge)
-
-        return
-
-        this.knowledges = [];
-
-        this.$http.get('http://api.sabichona.dev/api/knowledges?search=' + knowledge)
-        .then(response => {
-
-          this.knowledges = response.body.data.knowledges;
-
-        });
-
-      }
-
     }
 
   }
+
 </script>
