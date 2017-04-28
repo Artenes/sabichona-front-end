@@ -2,20 +2,20 @@
 
   <div>
     
-     <form>
+   <form>
 
      <div class="field has-addons has-addons-centered">
-        <p class="control is-expanded">
-          <input class="input" type="text" v-model="search" :placeholder="$lang.strings.please_type_here">
-        </p>
-        <p class="control">
-          <button class="button is-info is-outlined" type="submit">{{ $lang.strings.search }}</button>
-        </p>
-      </div>
+      <p class="control is-expanded">
+        <input class="input" type="text" v-model="search" :placeholder="$lang.strings.please_type_here">
+      </p>
+      <p class="control">
+        <button class="button is-info is-outlined" type="submit">{{ $lang.strings.search }}</button>
+      </p>
+    </div>
 
-    </form>
+  </form>
 
-  </div>
+</div>
 
 </template>
 

@@ -17,6 +17,9 @@ module.exports = {
 	click_here_to_start: 'Please, click here to start.',
 
 	please_type_here: 'Please, type here.',
-	search: 'Search.'
+	search: 'Search.',
+
+	change_location: 'change location.',
+	close: 'close.'
 
 }
