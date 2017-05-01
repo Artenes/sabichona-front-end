@@ -20,6 +20,20 @@ module.exports = {
 	search: 'Search.',
 
 	change_location: 'change location.',
-	close: 'close.'
+	close: 'close.',
+
+	download_attachment: 'download attachment.',
+	showed_me: 'showed me',
+
+	useful: 'usefull.',
+	useless: 'useless.',
+	share: 'share.',
+
+	next: 'next.',
+	previous: 'previous.',
+
+	please_show_more: 'please, show more.'
+
+
 
 }
