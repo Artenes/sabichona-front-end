@@ -11,9 +11,16 @@
     <h2 class="subtitle">{{ $lang.strings.app_description }}</h2>
     <LocationForm/>
     
-    <Search/>
+    <Search
+      @found="found"
+      @nothing="nothing"
+      @random="random"
+      @first="first"
+    />
 
+    <Notification ref="notification"/>
 
+    <Results :knowledges="knowledges" :pagination="pagination" @more="more"/>
 
   </div>
 
@@ -24,17 +31,21 @@
   import Navigation from '@/components/Navigation'
   import Search from '@/components/Search'
   import LocationForm from '@/components/LocationForm'
+  import Results from '@/components/Results'
+  import Notification from '@/components/Notification'
   import { mapState, mapGetters } from 'vuex'
 
   export default {
 
     data(){
       return {
-        isChangingLocation: false
+        isChangingLocation: false,
+        knowledges: [],
+        pagination: {}
       }
     },
 
-    components: { Navigation, Search, LocationForm},
+    components: { Notification, Navigation, Search, LocationForm, Results},
 
     computed: {
 
@@ -48,6 +59,34 @@
 
       changeLocation(){
         this.isChangingLocation = !this.isChangingLocation;
+      },
+      found(result){
+        this.$refs.notification.hide();
+        this.knowledges = result.knowledges;
+        this.pagination = result;
+      },
+      random(knowledge){
+        this.$refs.notification.hide();
+        this.$refs.notification.flashSuccess(this.$lang.errors.i_dont_know_what_you_want, 4);
+        this.knowledges = [knowledge];
+        this.pagination = {};
+      },
+      first(){
+        this.$refs.notification.hide();
+        this.$refs.notification.flashSuccess(this.$lang.errors.this_is_the_first_time, 30);
+        this.knowledges = [];
+        this.pagination = {};
+      },
+      nothing(search){
+        this.$refs.notification.hide();
+        let message = this.$lang.errors.couldnt_find_something + ' <strong>' + search + '</strong>?';
+        this.$refs.notification.flashSuccess(message, 6);
+        this.knowledges = [];
+        this.pagination = {};
+      },
+      more(knowledges, pagination){
+        this.knowledges = this.knowledges.concat(knowledges);
+        this.pagination = pagination;
       }
 
     }
