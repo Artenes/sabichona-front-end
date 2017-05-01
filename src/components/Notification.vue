@@ -74,7 +74,7 @@
 
   #notification {
     margin-top: 1em;
-    margin-bottom: 1em;
+    margin-bottom: 2em;
   }
 
   .fade-enter-active, .fade-leave-active {
